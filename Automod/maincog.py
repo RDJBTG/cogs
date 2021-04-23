@@ -23,7 +23,7 @@ class Automod(commands.Cog):
     @commands.command(name='block')
     @commands.admin()
     async def block(self, ctx, word: str):
-        self.blacklisted_words.append(word)
+        self.blacklisted_words.append(word.lower())
         await ctx.send(f'Blocked `{word}`')
 
     @commands.command(name='unblock')
@@ -42,5 +42,5 @@ class Automod(commands.Cog):
             return
 
         for word in self.blacklisted_words:
-            if word in message.content:
+            if word.lower() in message.content:
                 await message.delete()
