@@ -40,6 +40,8 @@ class Automod(commands.Cog):
     async def on_message(self, message):
         if not message.channel in self.watching:
             return
+        if message.author == self.bot.user:
+            return
 
         for word in self.blacklisted_words:
             if word.lower() in message.content:
