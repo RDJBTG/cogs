@@ -23,7 +23,7 @@ class Automod(commands.Cog):
     @commands.command(name='block')
     @commands.admin()
     async def block(self, ctx, word: str):
-        self.blacklisted_words.append(word.lower())
+        self.blacklisted_words.append(word)
         await ctx.send(f'Blocked `{word}`')
 
     @commands.command(name='unblock')
@@ -40,9 +40,9 @@ class Automod(commands.Cog):
     async def on_message(self, message):
         if not message.channel in self.watching:
             return
-        if message.author == self.bot.user:
+        if message.author.bot:
             return
 
         for word in self.blacklisted_words:
-            if word.lower() in message.content:
+            if word.lower() in message.content.lower():
                 await message.delete()
