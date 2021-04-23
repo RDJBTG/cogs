@@ -9,11 +9,11 @@ class Automod(commands.Cog):
 
         watching = list()
         self.config.init_custom("ChannelsWatched", 1)
-        self.config.register_custom("ChannelsWatched", **watching)
+        self.config.register_custom("ChannelsWatched")
         
         blacklisted_words = list()
         self.config.init_custom("BlacklistedWords", 1)
-        self.config.register_custom("BlacklistedWords", **blacklisted_words)
+        self.config.register_custom("BlacklistedWords")
         
     @commands.group(name='automod')
     async def automod(self, ctx):
