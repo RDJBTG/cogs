@@ -42,5 +42,5 @@ class Automod(commands.Cog):
             return
 
         for word in self.blacklisted_words:
-            if message.content in word:
+            if word in message.content:
                 await message.delete()
