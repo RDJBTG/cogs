@@ -1,0 +1,8 @@
+{
+    "author" : ["Arch (archwl#9675)"],
+    "install_msg" : "So it worked then.",
+    "name" : "Automod",
+    "short" : "Automoderation commands",
+    "description" : "Automoderation commands",
+    "tags" : ["automod"]
+}
