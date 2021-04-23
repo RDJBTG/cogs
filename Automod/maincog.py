@@ -22,13 +22,13 @@ class Automod(commands.Cog):
     
     @commands.command(name='block')
     @commands.admin()
-    async def watch(self, ctx, word: str):
+    async def block(self, ctx, word: str):
         await self.blacklisted_words.append(word)
         await ctx.send(f'Blocked `{word}`')
 
     @commands.command(name='unblock')
     @commands.admin()
-    async def unwatch(self, ctx, word: str):
+    async def unblock(self, ctx, word: str):
         del self.blacklisted_words[word]
         await ctx.send(f'Unblocked `{word}`')
     
