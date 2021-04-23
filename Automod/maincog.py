@@ -20,26 +20,26 @@ class Automod(commands.Cog):
         pass
 
     @automod.command(name='watch')
-    @checks.is_admin
+    @commands.admin()
     async def watch(self, ctx, channel: discord.TextChannel):
         await self.config.custom("ChannelsWatched").watching().append(channel)
         await ctx.send(f'Watching {channel.name}')
 
     @automod.command(name='unwatch')
-    @checks.is_admin
+    @commands.admin()
     async def unwatch(self, ctx, channel: discord.TextChannel):
         watching = await self.config.custom("ChannelsWatched").watching()
         del watching[channel]
         await ctx.send(f'Stopped watching {channel.name}')
     
     @automod.command(name='block')
-    @checks.is_admin
+    @commands.admin()
     async def watch(self, ctx, word: str):
         await self.config.custom("BlacklistedWords").blacklisted_words.append(word)
         await ctx.send(f'Blocked `{word}`')
 
     @automod.command(name='unblock')
-    @checks.is_admin
+    @commands.admin()
     async def unwatch(self, ctx, word: str):
         blacklisted = await self.config.custom("BlacklistedWords").blacklisted_words()
         del blacklisted[word]
