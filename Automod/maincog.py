@@ -5,8 +5,8 @@ from redbot.core import Config, commands, checks
 class Automod(commands.Cog):
     """Automoderation commands"""
     def __init__(self):
-        watching = list()
-        blacklisted_words = list()
+        self.watching = list()
+        self.blacklisted_words = list()
         
     @commands.group(name='automod')
     async def automod(self, ctx):
