@@ -11,7 +11,7 @@ class Automod(commands.Cog):
     @commands.command(name='watch')
     @commands.admin()
     async def watch(self, ctx, channel: discord.TextChannel):
-        await self.watching.append(channel)
+        self.watching.append(channel)
         await ctx.send(f'Watching {channel.name}')
 
     @commands.command(name='unwatch')
@@ -23,7 +23,7 @@ class Automod(commands.Cog):
     @commands.command(name='block')
     @commands.admin()
     async def block(self, ctx, word: str):
-        await self.blacklisted_words.append(word)
+        self.blacklisted_words.append(word)
         await ctx.send(f'Blocked `{word}`')
 
     @commands.command(name='unblock')
