@@ -29,7 +29,8 @@ class Automod(commands.Cog):
     @commands.command(name='unblock')
     @commands.admin()
     async def unblock(self, ctx, word: str):
-        del self.blacklisted_words[word]
+        while word in self.blacklisted_words:
+            self.blacklisted_words.remove(word)
         await ctx.send(f'Unblocked `{word}`')
     
     @commands.command(name='listblocked')
