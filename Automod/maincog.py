@@ -17,7 +17,8 @@ class Automod(commands.Cog):
     @commands.command(name='unwatch')
     @commands.admin()
     async def unwatch(self, ctx, channel: discord.TextChannel):
-        del self.watching[channel]
+        while channel in self.watching:
+            self.watching.remove(channel)
         await ctx.send(f'Stopped watching {channel.name}')
     
     @commands.command(name='block')
